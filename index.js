@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var createBots = require('./lib/helpers').createBots;
 var logger = require('winston');
 

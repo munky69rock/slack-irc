@@ -1,9 +1,12 @@
+'use strict';
+
 /* eslint no-unused-expressions: 0 */
 var chai = require('chai');
 var sinonChai = require('sinon-chai');
 var rewire = require('rewire');
 var irc = require('irc');
 var Bot = rewire('../lib/bot');
+var strings = rewire('../lib/strings');
 var SlackStub = require('./stubs/slack-stub');
 var ChannelStub = require('./stubs/channel-stub');
 var ClientStub = require('./stubs/irc-client-stub');
@@ -70,13 +73,13 @@ describe('Bot', function() {
     var text = 'testmessage';
     var message = {
       channel: 'slack',
-      getBody: function() {
+      getBody() {
         return text;
       }
     };
 
     this.bot.sendToIRC(message);
-    var ircText = '<testuser> ' + text;
+    var ircText = '<' + strings.insertSpace('testuser') + '> ' + text;
     ClientStub.prototype.say.should.have.been.calledWith('#irc', ircText);
   });
 
@@ -109,13 +112,13 @@ describe('Bot', function() {
     var text = '<@USOMEID> <@USOMEID|readable>';
     var message = {
       channel: 'slack',
-      getBody: function() {
+      getBody() {
         return text;
       }
     };
 
     this.bot.sendToIRC(message);
-    ClientStub.prototype.say.should.have.been.calledWith('#irc', '<testuser> @testuser readable');
+    ClientStub.prototype.say.should.have.been.calledWith('#irc', '<' + strings.insertSpace('testuser') + '> @testuser readable');
   });
 
   it('should parse text from slack', function() {
@@ -141,7 +144,7 @@ describe('Bot', function() {
     var text = '!test command';
     var message = {
       channel: 'slack',
-      getBody: function() {
+      getBody() {
         return text;
       }
     };

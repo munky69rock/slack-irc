@@ -1,3 +1,5 @@
+'use strict';
+
 var chai = require('chai');
 var rewire = require('rewire');
 var irc = require('irc');

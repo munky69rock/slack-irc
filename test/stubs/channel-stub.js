@@ -1,13 +1,15 @@
-var util = require('util');
+'use strict';
+
 var events = require('events');
 var sinon = require('sinon');
 
-function ChannelStub() {
-  this.name = 'slack';
-  this.is_channel = true;
+class ChannelStub extends events.EventEmitter {
+  constructor() {
+    super();
+    this.name = 'slack';
+    this.is_channel = true;
+  }
 }
-
-util.inherits(ChannelStub, events.EventEmitter);
 
 ChannelStub.prototype.postMessage = sinon.stub();
 

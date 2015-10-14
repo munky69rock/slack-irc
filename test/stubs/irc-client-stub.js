@@ -1,10 +1,9 @@
-var util = require('util');
+'use strict';
+
 var events = require('events');
 var sinon = require('sinon');
 
-function ClientStub() {}
-
-util.inherits(ClientStub, events.EventEmitter);
+class ClientStub extends events.EventEmitter {}
 
 ClientStub.prototype.say = sinon.stub();
 

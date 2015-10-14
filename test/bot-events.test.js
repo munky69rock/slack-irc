@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint no-unused-expressions: 0 */
 var chai = require('chai');
 var sinonChai = require('sinon-chai');
@@ -96,7 +98,7 @@ describe('Bot Events', function() {
     var channel = '#channel';
     var author = 'user';
     var text = 'hi';
-    var formattedText = '*' + text + '*';
+    var formattedText = `_ ${text} _`;
     this.bot.ircClient.emit('notice', author, channel, text);
     Bot.prototype.sendToSlack.should.have.been.calledWithExactly(author, channel, formattedText);
   });
@@ -105,7 +107,7 @@ describe('Bot Events', function() {
     var channel = '#channel';
     var author = 'user';
     var text = 'hi';
-    var formattedText = '_hi_';
+    var formattedText = `*${text}*`;
     var message = {};
     this.bot.ircClient.emit('action', author, channel, text, message);
     Bot.prototype.sendToSlack.should.have.been.calledWithExactly(author, channel, formattedText);
