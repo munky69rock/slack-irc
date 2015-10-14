@@ -1,3 +1,5 @@
+'use strict';
+
 var chai = require('chai');
 var errors = require('../lib/errors');
 

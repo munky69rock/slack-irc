@@ -4,9 +4,11 @@
     "func-names": 0,
     "vars-on-top": 0,
     "id-length": 0,
-    "comma-dangle": [2, "never"]
+    "comma-dangle": [2, "never"],
+    "strict": [2, "global"]
   },
   "env": {
+    "es6": true,
     "mocha": true,
     "node": true
   }

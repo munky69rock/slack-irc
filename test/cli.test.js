@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint no-unused-expressions: 0 */
 var chai = require('chai');
 var sinon = require('sinon');

@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint . --ignore-path .gitignore",
-    "coverage": "istanbul cover _mocha $(find test -name '*.test.js') && istanbul report cobertura",
+    "coverage": "istanbul cover _mocha -- --compilers js:babel/register $(find test -name '*.test.js') && istanbul report cobertura",
     "test": "npm run lint && npm run coverage"
   },
   "bin": {
@@ -39,6 +39,7 @@
     "winston": "~1.0.0"
   },
   "devDependencies": {
+    "babel": "^5.8.23",
     "chai": "~2.3.0",
     "eslint": "~1.6.0",
     "eslint-config-airbnb": "~0.1.0",
